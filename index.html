@@ -1,9 +1,8 @@
-<!doctype html>
+<!DOCTYPE html>
 <html lang="pt-BR">
 <head>
-<meta charset="utf-8">
-<meta name="viewport" content="width=device-width,initial-scale=1">
-
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>CHAMA PRO ARACAJU</title>
 
 <style>
@@ -11,141 +10,272 @@
   box-sizing:border-box;
 }
 
-body{
+html,body{
   margin:0;
-  font-family:Arial,sans-serif;
-  background:#f5f7fb;
+  padding:0;
+  font-family:Arial,Helvetica,sans-serif;
+  background:#f7f8fa;
   color:#172033;
 }
 
-.app{
-  max-width:560px;
-  margin:auto;
+body{
   min-height:100vh;
-  background:#fff;
+  padding-bottom:110px;
 }
 
-.hero{
-  padding:28px 20px;
-  background:linear-gradient(135deg,#0057d9,#00a6ff);
-  color:#fff;
-  border-radius:0 0 28px 28px;
+.app{
+  width:100%;
+  max-width:700px;
+  margin:auto;
 }
 
-.brand{
-  font-weight:900;
-  font-size:28px;
+/* TOPO */
+.topo{
+  background:linear-gradient(135deg,#0867dc,#08a9ed);
+  color:white;
+  padding:55px 38px 50px;
+  border-radius:0 0 55px 55px;
 }
 
-.sub{
-  opacity:.92;
-  margin-top:5px;
+.topo h1{
+  margin:0 0 12px;
+  font-size:36px;
+  line-height:1.1;
+  font-weight:800;
 }
 
-.wrap{
-  padding:18px;
-  padding-bottom:90px;
+.topo p{
+  margin:0;
+  font-size:25px;
+}
+
+/* CONTEÚDO */
+.conteudo{
+  padding:45px 35px 20px;
 }
 
 .card{
-  border:1px solid #e4e8f0;
-  border-radius:18px;
-  padding:16px;
-  margin:12px 0;
-  box-shadow:0 5px 18px #00000008;
+  background:white;
+  border:2px solid #e5e7eb;
+  border-radius:30px;
+  padding:32px;
+  margin-bottom:25px;
+  box-shadow:0 4px 15px rgba(0,0,0,.03);
 }
 
-.grid{
-  display:grid;
-  grid-template-columns:1fr 1fr;
-  gap:10px;
+.card h2{
+  margin:0 0 30px;
+  font-size:35px;
+}
+
+.card h3{
+  font-size:28px;
+  margin:15px 0;
+}
+
+.muted{
+  color:#6b7280;
+  font-size:22px;
+  line-height:1.5;
+}
+
+/* BOTÕES */
+.botoes{
+  display:flex;
+  gap:18px;
 }
 
 .btn{
   border:0;
-  border-radius:13px;
-  padding:13px 16px;
+  border-radius:22px;
+  padding:22px 15px;
+  font-size:22px;
   font-weight:800;
   cursor:pointer;
-  background:#ffd400;
+  flex:1;
+  min-height:82px;
+}
+
+.btn:active{
+  transform:scale(.98);
+}
+
+.azul{
+  background:#0867dc;
+  color:white;
+}
+
+.vermelho{
+  background:#eb3838;
+  color:white;
+}
+
+.amarelo{
+  background:#ffd000;
   color:#111;
-  font-size:15px;
 }
 
-.btn.blue{
-  background:#075bd8;
-  color:#fff;
-}
-
-.btn.red{
-  background:#e53935;
-  color:#fff;
-}
-
-.btn.gray{
-  background:#e9edf4;
+.cinza{
+  background:#e9eef3;
   color:#172033;
 }
 
-.hidden{
+/* LOCAL */
+.local{
+  padding:38px 32px;
+}
+
+.local-titulo{
+  font-size:30px;
+  font-weight:800;
+  margin-bottom:25px;
+}
+
+/* TELAS */
+.tela{
   display:none;
 }
 
-.top{
+.tela.ativa{
+  display:block;
+}
+
+.titulo-pagina{
   display:flex;
   justify-content:space-between;
   align-items:center;
-  gap:10px;
+  margin-bottom:35px;
 }
 
-.muted{
-  color:#687386;
-  font-size:14px;
+.titulo-pagina h2{
+  margin:0;
+  font-size:38px;
 }
 
-.nav{
+/* ÍCONES */
+.icone{
+  text-align:center;
+  font-size:90px;
+  margin-bottom:15px;
+}
+
+/* FORMULÁRIO */
+.formulario label{
+  display:block;
+  font-size:20px;
+  font-weight:bold;
+  margin:18px 0 8px;
+}
+
+.formulario input,
+.formulario select,
+.formulario textarea{
+  width:100%;
+  padding:18px;
+  border:2px solid #dfe3e8;
+  border-radius:15px;
+  font-size:19px;
+  background:white;
+}
+
+.formulario textarea{
+  min-height:120px;
+  resize:vertical;
+}
+
+.formulario .btn{
+  margin-top:25px;
+  width:100%;
+}
+
+/* PROFISSIONAIS */
+.profissional{
+  border:2px solid #e5e7eb;
+  border-radius:22px;
+  padding:22px;
+  margin-bottom:18px;
+  background:white;
+}
+
+.profissional strong{
+  font-size:25px;
+}
+
+.profissional p{
+  margin:8px 0;
+  color:#6b7280;
+  font-size:18px;
+}
+
+/* RODAPÉ */
+.menu{
   position:fixed;
   bottom:0;
-  left:50%;
-  transform:translateX(-50%);
-  width:100%;
-  max-width:560px;
-  background:#fff;
-  border-top:1px solid #ddd;
-  padding:10px;
+  left:0;
+  right:0;
+  background:white;
+  border-top:2px solid #ddd;
+  padding:12px 18px 18px;
   display:flex;
-  gap:8px;
-  z-index:10;
+  gap:14px;
+  z-index:1000;
 }
 
-.nav button{
-  flex:1;
+.menu .btn{
+  min-height:80px;
+  font-size:21px;
 }
 
-.big{
-  text-align:center;
-  padding:25px 10px;
-}
+/* CELULAR */
+@media(max-width:500px){
 
-.big-icon{
-  font-size:55px;
-  margin-bottom:10px;
-}
+  .topo{
+    padding:55px 38px 48px;
+  }
 
-@media(max-width:430px){
+  .topo h1{
+    font-size:34px;
+  }
 
-  .brand{
+  .topo p{
     font-size:24px;
   }
 
-  .grid{
-    grid-template-columns:1fr 1fr;
+  .conteudo{
+    padding:40px 35px 20px;
+  }
+
+  .card{
+    padding:30px;
+    border-radius:30px;
+  }
+
+  .card h2{
+    font-size:34px;
+  }
+
+  .botoes{
+    gap:18px;
   }
 
   .btn{
-    padding:13px 8px;
+    font-size:21px;
+    padding:20px 10px;
   }
 
+  .titulo-pagina h2{
+    font-size:35px;
+  }
+
+  .menu{
+    gap:14px;
+    padding:12px 18px 18px;
+  }
+
+  .menu .btn{
+    font-size:20px;
+    padding:15px 8px;
+  }
 }
 </style>
 </head>
@@ -154,331 +284,559 @@ body{
 
 <div class="app">
 
-  <!-- CABEÇALHO -->
-  <div class="hero">
+<!-- ================= TOPO ================= -->
 
-    <div class="brand">
-      CHAMA PRO ARACAJU
-    </div>
+<header class="topo">
+  <h1>CHAMA PRO ARACAJU</h1>
+  <p>Precisou? Chama Pro!</p>
+</header>
 
-    <div class="sub">
-      Precisou? Chama Pro!
+
+<!-- ================= INÍCIO ================= -->
+
+<section id="home" class="tela ativa">
+
+<div class="conteudo">
+
+  <div class="card">
+
+    <h2>O que você precisa?</h2>
+
+    <div class="botoes">
+
+      <button class="btn azul"
+        onclick="abrir('profissionais')">
+        🔎 Procurar<br>profissional
+      </button>
+
+      <button class="btn vermelho"
+        onclick="abrir('urgente')">
+        🚨 PRECISO<br>AGORA
+      </button>
+
     </div>
 
   </div>
 
 
-  <div class="wrap">
+  <div class="card">
 
-    <!-- INÍCIO -->
-    <section id="home">
+    <h2>Entrar ou cadastrar</h2>
 
-      <div class="card">
+    <div class="botoes">
 
-        <h2>
-          O que você precisa?
-        </h2>
+      <button class="btn amarelo"
+        onclick="abrir('entrar')">
+        Entrar
+      </button>
 
-        <div class="grid">
+      <button class="btn amarelo"
+        onclick="abrir('cadastrar')">
+        Cadastrar
+      </button>
 
-          <button
-            class="btn blue"
-            onclick="abrir('search')">
-
-            🔎 Procurar
-            profissional
-
-          </button>
-
-
-          <button
-            class="btn red"
-            onclick="abrir('request')">
-
-            🚨 PRECISO
-            AGORA
-
-          </button>
-
-        </div>
-
-      </div>
-
-
-      <div class="card">
-
-        <h3>
-          Entrar ou cadastrar
-        </h3>
-
-        <div class="grid">
-
-          <button
-            class="btn"
-            onclick="abrir('login')">
-
-            Entrar
-
-          </button>
-
-
-          <button
-            class="btn"
-            onclick="abrir('register')">
-
-            Cadastrar
-
-          </button>
-
-        </div>
-
-      </div>
-
-
-      <div class="card">
-
-        <h3>
-          📍 Aracaju
-        </h3>
-
-        <p class="muted">
-          Encontre profissionais e peça orçamento.
-        </p>
-
-      </div>
-
-    </section>
-
-
-    <!-- PROCURAR PROFISSIONAL -->
-    <section
-      id="search"
-      class="hidden">
-
-      <div class="top">
-
-        <h2>
-          Profissionais
-        </h2>
-
-        <button
-          class="btn gray"
-          onclick="abrir('home')">
-
-          Voltar
-
-        </button>
-
-      </div>
-
-
-      <div class="card big">
-
-        <div class="big-icon">
-          🔎
-        </div>
-
-        <h3>
-          Procurar profissional
-        </h3>
-
-        <p class="muted">
-          Essa parte será criada no próximo passo.
-        </p>
-
-      </div>
-
-    </section>
-
-
-    <!-- PRECISO AGORA -->
-    <section
-      id="request"
-      class="hidden">
-
-      <div class="top">
-
-        <h2>
-          Preciso agora
-        </h2>
-
-        <button
-          class="btn gray"
-          onclick="abrir('home')">
-
-          Voltar
-
-        </button>
-
-      </div>
-
-
-      <div class="card big">
-
-        <div class="big-icon">
-          🚨
-        </div>
-
-        <h3>
-          Novo chamado
-        </h3>
-
-        <p class="muted">
-          Essa parte será criada no próximo passo.
-        </p>
-
-      </div>
-
-    </section>
-
-
-    <!-- ENTRAR -->
-    <section
-      id="login"
-      class="hidden">
-
-      <div class="top">
-
-        <h2>
-          Entrar
-        </h2>
-
-        <button
-          class="btn gray"
-          onclick="abrir('home')">
-
-          Voltar
-
-        </button>
-
-      </div>
-
-
-      <div class="card big">
-
-        <div class="big-icon">
-          👤
-        </div>
-
-        <h3>
-          Entrar na conta
-        </h3>
-
-        <p class="muted">
-          O sistema de login será colocado depois.
-        </p>
-
-      </div>
-
-    </section>
-
-
-    <!-- CADASTRAR -->
-    <section
-      id="register"
-      class="hidden">
-
-      <div class="top">
-
-        <h2>
-          Cadastrar
-        </h2>
-
-        <button
-          class="btn gray"
-          onclick="abrir('home')">
-
-          Voltar
-
-        </button>
-
-      </div>
-
-
-      <div class="card big">
-
-        <div class="big-icon">
-          📝
-        </div>
-
-        <h3>
-          Criar conta
-        </h3>
-
-        <p class="muted">
-          O cadastro será colocado depois.
-        </p>
-
-      </div>
-
-    </section>
+    </div>
 
   </div>
 
 
-  <!-- MENU INFERIOR -->
-  <div class="nav">
+  <div class="card local">
 
-    <button
-      class="btn"
-      onclick="abrir('home')">
+    <div class="local-titulo">
+      📍 Aracaju
+    </div>
 
-      Início
-
-    </button>
-
-
-    <button
-      class="btn"
-      onclick="abrir('search')">
-
-      Profissionais
-
-    </button>
-
-
-    <button
-      class="btn red"
-      onclick="abrir('request')">
-
-      Preciso agora
-
-    </button>
+    <div class="muted">
+      Encontre profissionais e peça orçamento.
+    </div>
 
   </div>
 
 </div>
 
+</section>
+
+
+<!-- ================= PROFISSIONAIS ================= -->
+
+<section id="profissionais" class="tela">
+
+<div class="conteudo">
+
+  <div class="titulo-pagina">
+
+    <h2>Profissionais</h2>
+
+    <button class="btn cinza"
+      onclick="abrir('home')"
+      style="flex:0;padding:15px 20px;min-height:auto;">
+      Voltar
+    </button>
+
+  </div>
+
+
+  <div class="card">
+
+    <h3>🔎 Procurar profissional</h3>
+
+    <div class="formulario">
+
+      <label>O que você precisa?</label>
+
+      <select id="categoria">
+        <option value="">Escolha uma categoria</option>
+        <option>Eletricista</option>
+        <option>Encanador</option>
+        <option>Pedreiro</option>
+        <option>Pintor</option>
+        <option>Marceneiro</option>
+        <option>Ar-condicionado</option>
+        <option>Mecânico</option>
+        <option>Soldador</option>
+        <option>Serviços gerais</option>
+        <option>Outro</option>
+      </select>
+
+      <button class="btn azul"
+        onclick="buscarProfissional()">
+        🔎 Procurar
+      </button>
+
+    </div>
+
+  </div>
+
+
+  <div id="resultadoProfissionais">
+
+    <div class="card">
+      <h3>Profissionais disponíveis</h3>
+      <p class="muted">
+        Escolha uma categoria acima para procurar.
+      </p>
+    </div>
+
+  </div>
+
+</div>
+
+</section>
+
+
+<!-- ================= PRECISO AGORA ================= -->
+
+<section id="urgente" class="tela">
+
+<div class="conteudo">
+
+  <div class="titulo-pagina">
+
+    <h2>Preciso agora</h2>
+
+    <button class="btn cinza"
+      onclick="abrir('home')"
+      style="flex:0;padding:15px 20px;min-height:auto;">
+      Voltar
+    </button>
+
+  </div>
+
+
+  <div class="card">
+
+    <div class="icone">🚨</div>
+
+    <h3 style="text-align:center;">
+      Atendimento urgente
+    </h3>
+
+    <p class="muted" style="text-align:center;">
+      Informe o serviço que você precisa e entraremos
+      em contato com profissionais disponíveis.
+    </p>
+
+    <div class="formulario">
+
+      <label>Serviço</label>
+
+      <input
+        id="servicoUrgente"
+        type="text"
+        placeholder="Ex.: eletricista">
+
+      <label>Descrição</label>
+
+      <textarea
+        id="descricaoUrgente"
+        placeholder="Explique o que aconteceu..."></textarea>
+
+      <label>Local</label>
+
+      <input
+        id="localUrgente"
+        type="text"
+        placeholder="Bairro em Aracaju">
+
+      <button class="btn vermelho"
+        onclick="enviarUrgente()">
+        🚨 Solicitar atendimento
+      </button>
+
+    </div>
+
+  </div>
+
+</div>
+
+</section>
+
+
+<!-- ================= ENTRAR ================= -->
+
+<section id="entrar" class="tela">
+
+<div class="conteudo">
+
+  <div class="titulo-pagina">
+
+    <h2>Entrar</h2>
+
+    <button class="btn cinza"
+      onclick="abrir('home')"
+      style="flex:0;padding:15px 20px;min-height:auto;">
+      Voltar
+    </button>
+
+  </div>
+
+
+  <div class="card">
+
+    <div class="icone">👤</div>
+
+    <h3>Entrar na conta</h3>
+
+    <div class="formulario">
+
+      <label>Telefone ou e-mail</label>
+
+      <input
+        id="login"
+        type="text"
+        placeholder="Digite seu telefone ou e-mail">
+
+      <label>Senha</label>
+
+      <input
+        id="senha"
+        type="password"
+        placeholder="Digite sua senha">
+
+      <button class="btn azul"
+        onclick="entrarConta()">
+        Entrar
+      </button>
+
+    </div>
+
+  </div>
+
+</div>
+
+</section>
+
+
+<!-- ================= CADASTRAR ================= -->
+
+<section id="cadastrar" class="tela">
+
+<div class="conteudo">
+
+  <div class="titulo-pagina">
+
+    <h2>Cadastrar</h2>
+
+    <button class="btn cinza"
+      onclick="abrir('home')"
+      style="flex:0;padding:15px 20px;min-height:auto;">
+      Voltar
+    </button>
+
+  </div>
+
+
+  <div class="card">
+
+    <div class="icone">📝</div>
+
+    <h3>Criar conta</h3>
+
+    <p class="muted">
+      Cadastre seus dados para utilizar o Chama Pro.
+    </p>
+
+    <div class="formulario">
+
+      <label>Nome completo</label>
+
+      <input
+        id="nomeCadastro"
+        type="text"
+        placeholder="Seu nome">
+
+      <label>Telefone</label>
+
+      <input
+        id="telefoneCadastro"
+        type="tel"
+        placeholder="(79) 99999-9999">
+
+      <label>E-mail</label>
+
+      <input
+        id="emailCadastro"
+        type="email"
+        placeholder="seuemail@email.com">
+
+      <label>Você é:</label>
+
+      <select id="tipoCadastro">
+        <option value="cliente">Cliente</option>
+        <option value="profissional">Profissional</option>
+      </select>
+
+      <label>Senha</label>
+
+      <input
+        id="senhaCadastro"
+        type="password"
+        placeholder="Crie uma senha">
+
+      <button class="btn amarelo"
+        onclick="cadastrarConta()">
+        Criar minha conta
+      </button>
+
+    </div>
+
+  </div>
+
+</div>
+
+</section>
+
+</div>
+
+
+<!-- ================= MENU INFERIOR ================= -->
+
+<nav class="menu">
+
+  <button class="btn amarelo"
+    onclick="abrir('home')">
+    Início
+  </button>
+
+  <button class="btn amarelo"
+    onclick="abrir('profissionais')">
+    Profissionais
+  </button>
+
+  <button class="btn vermelho"
+    onclick="abrir('urgente')">
+    Preciso<br>agora
+  </button>
+
+</nav>
+
+
+<!-- ================= JAVASCRIPT ================= -->
 
 <script>
 
 function abrir(tela){
 
-  const telas = [
-    'home',
-    'search',
-    'request',
-    'login',
-    'register'
-  ];
+  const telas = document.querySelectorAll('.tela');
 
-  telas.forEach(function(nome){
-
-    const elemento =
-      document.getElementById(nome);
-
-    if(elemento){
-
-      elemento.classList.toggle(
-        'hidden',
-        nome !== tela
-      );
-
-    }
-
+  telas.forEach(function(item){
+    item.classList.remove('ativa');
   });
 
-  window.scrollTo(0,0);
+  const escolhida = document.getElementById(tela);
+
+  if(escolhida){
+    escolhida.classList.add('ativa');
+  }
+
+  window.scrollTo({
+    top:0,
+    behavior:'smooth'
+  });
+}
+
+
+/* BUSCAR PROFISSIONAL */
+
+function buscarProfissional(){
+
+  const categoria =
+    document.getElementById('categoria').value;
+
+  const resultado =
+    document.getElementById('resultadoProfissionais');
+
+  if(categoria === ''){
+
+    resultado.innerHTML = `
+      <div class="card">
+        <h3>⚠️ Atenção</h3>
+        <p class="muted">
+          Escolha uma categoria primeiro.
+        </p>
+      </div>
+    `;
+
+    return;
+  }
+
+  resultado.innerHTML = `
+
+    <div class="card">
+
+      <h3>Profissionais de ${categoria}</h3>
+
+      <div class="profissional">
+
+        <strong>👷 Profissional disponível</strong>
+
+        <p>
+          ${categoria}
+        </p>
+
+        <button class="btn azul"
+          onclick="alert('Em breve será possível entrar em contato com este profissional.')">
+          Ver contato
+        </button>
+
+      </div>
+
+      <div class="profissional">
+
+        <strong>👷 Profissional disponível</strong>
+
+        <p>
+          ${categoria}
+        </p>
+
+        <button class="btn azul"
+          onclick="alert('Em breve será possível entrar em contato com este profissional.')">
+          Ver contato
+        </button>
+
+      </div>
+
+    </div>
+  `;
+}
+
+
+/* SOLICITAÇÃO URGENTE */
+
+function enviarUrgente(){
+
+  const servico =
+    document.getElementById('servicoUrgente').value;
+
+  const descricao =
+    document.getElementById('descricaoUrgente').value;
+
+  const local =
+    document.getElementById('localUrgente').value;
+
+  if(servico === '' || local === ''){
+
+    alert(
+      'Informe o serviço e o local para continuar.'
+    );
+
+    return;
+  }
+
+  alert(
+    'Solicitação registrada!\\n\\n' +
+    'Serviço: ' + servico + '\\n' +
+    'Local: ' + local
+  );
+
+}
+
+
+/* LOGIN */
+
+function entrarConta(){
+
+  const login =
+    document.getElementById('login').value;
+
+  const senha =
+    document.getElementById('senha').value;
+
+  if(login === '' || senha === ''){
+
+    alert(
+      'Digite seu telefone/e-mail e sua senha.'
+    );
+
+    return;
+  }
+
+  alert(
+    'Área de login preparada.\\n\\n' +
+    'O sistema de conta real será conectado na próxima etapa.'
+  );
+
+}
+
+
+/* CADASTRO */
+
+function cadastrarConta(){
+
+  const nome =
+    document.getElementById('nomeCadastro').value;
+
+  const telefone =
+    document.getElementById('telefoneCadastro').value;
+
+  const email =
+    document.getElementById('emailCadastro').value;
+
+  const tipo =
+    document.getElementById('tipoCadastro').value;
+
+  const senha =
+    document.getElementById('senhaCadastro').value;
+
+  if(
+    nome === '' ||
+    telefone === '' ||
+    email === '' ||
+    senha === ''
+  ){
+
+    alert(
+      'Preencha todos os campos.'
+    );
+
+    return;
+  }
+
+  alert(
+    'Cadastro preenchido com sucesso!\\n\\n' +
+    'Nome: ' + nome + '\\n' +
+    'Tipo: ' + tipo
+  );
 
 }
 
