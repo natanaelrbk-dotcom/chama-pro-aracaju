@@ -124,8 +124,8 @@ async function loadCategories(){
   const {data,error}=await supabase.from('categories').select('id,name,icon').eq('active',true).order('id');
   if(error){msg('reqMsg',error.message,'error');return;}
   categories=data||[];
-  $('reqCat').innerHTML=categories.map(c=>`<option value="${c.id}">${c.icon||''} ${c.name}</option>`).join('');
-}
+  $('#reqCat').innerHTML=categories.map(c=>`<option value="${c.id}">${c.icon||''} ${c.name}</option>`).join('');
+
 window.renderPros=async function(){
   const {data,error}=await supabase.from('professional_profiles')
     .select('id,description,service_area,whatsapp,verified,available_now,rating,rating_count,profiles!professional_profiles_id_fkey(full_name),professional_categories(categories(name))')
