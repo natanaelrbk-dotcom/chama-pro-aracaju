@@ -1,139 +1,1070 @@
-  if(id==='request') await loadCategories();
-  if(id==='dashboard') await dashboard();
-};<input class="input" id="loginPassword" type="password" placeholder="Senha">
-<button class="btn blue" onclick="login()">Entrar</button><p id="loginMsg"></p>
-<p class="small">Nesta versão, o acesso usa e-mail e senha pelo Supabase.</p></section>
+<!doctype html>
+<html lang="pt-BR">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>CHAMA PRO ARACAJU</title>
+<style>
+*{box-sizing:border-box}
+body{margin:0;font-family:Arial,sans-serif;background:#f5f7fb;color:#172033}
+.app{max-width:560px;margin:auto;min-height:100vh;background:#fff}
+.hero{padding:28px 20px;background:linear-gradient(135deg,#0057d9,#00a6ff);color:#fff;border-radius:0 0 28px 28px}
+.brand{font-weight:900;font-size:28px}
+.sub{opacity:.92;margin-top:5px}
+.wrap{padding:18px}
+.card{border:1px solid #e4e8f0;border-radius:18px;padding:16px;margin:12px 0;box-shadow:0 5px 18px #00000008}
+.btn{border:0;border-radius:13px;padding:13px 16px;font-weight:800;cursor:pointer;background:#ffd400;color:#111}
+.btn.blue{background:#075bd8;color:#fff}
+.btn.red{background:#e53935;color:#fff}
+.grid{display:grid;grid-template-columns:1fr 1fr;gap:10px}
+.input,select,textarea{width:100%;padding:13px;border:1px solid #d8deea;border-radius:12px;margin:7px 0;font-size:15px}
+textarea{min-height:100px}
+.pill{display:inline-block;padding:5px 9px;border-radius:99px;background:#edf4ff;color:#075bd8;font-size:12px;font-weight:700}
+.rating{font-weight:900}
+.hidden{display:none}
+.top{display:flex;justify-content:space-between;align-items:center;gap:10px}
+.muted{color:#687386;font-size:14px}
+.urgent{background:#fff0f0;border-color:#ffd1d1}
+.pro{display:flex;justify-content:space-between;gap:10px}
+.error{color:#c62828;font-weight:700}
+.ok{color:#087f46;font-weight:700}
+.small{font-size:12px;color:#687386}
+.nav{position:sticky;bottom:0;background:#fff;border-top:1px solid #ddd;padding:10px;display:flex;gap:8px}
+.nav button{flex:1}
+</style>
+</head>
 
-<section id="register" class="hidden"><div class="top"><h2>Criar conta</h2><button class="btn" onclick="show('home')">Voltar</button></div>
+<body>
+<div class="app">
+
+<div class="hero">
+<div class="brand">CHAMA PRO ARACAJU</div>
+<div class="sub">Precisou? Chama Pro!</div>
+</div>
+
+<div class="wrap">
+
+<section id="home">
+
+<div class="card">
+<h2>O que você precisa?</h2>
+
+<div class="grid">
+
+<button class="btn blue" onclick="show('search')">
+🔎 Procurar profissional
+</button>
+
+<button class="btn red" onclick="show('request')">
+🚨 PRECISO AGORA
+</button>
+
+</div>
+</div>
+
+<div class="card">
+<h3>Entrar ou cadastrar</h3>
+
+<div class="grid">
+
+<button class="btn" onclick="show('login')">
+Entrar
+</button>
+
+<button class="btn" onclick="show('register')">
+Cadastrar
+</button>
+
+</div>
+</div>
+
+<div class="card">
+<h3>📍 Aracaju</h3>
+<p class="muted">Encontre profissionais e peça orçamento.</p>
+</div>
+
+</section>
+
+
+<section id="login" class="hidden">
+
+<div class="top">
+<h2>Entrar</h2>
+<button class="btn" onclick="show('home')">Voltar</button>
+</div>
+
+<input class="input" id="loginEmail" type="email" placeholder="E-mail">
+
+<input class="input" id="loginPassword" type="password" placeholder="Senha">
+
+<button class="btn blue" onclick="login()">
+Entrar
+</button>
+
+<p id="loginMsg"></p>
+
+<p class="small">
+Nesta versão, o acesso usa e-mail e senha pelo Supabase.
+</p>
+
+</section>
+
+
+<section id="register" class="hidden">
+
+<div class="top">
+<h2>Criar conta</h2>
+<button class="btn" onclick="show('home')">Voltar</button>
+</div>
+
 <input class="input" id="name" placeholder="Nome completo">
+
 <input class="input" id="email" type="email" placeholder="E-mail">
+
 <input class="input" id="password" type="password" placeholder="Senha (mínimo 6 caracteres)">
+
 <input class="input" id="phone" placeholder="Telefone/WhatsApp">
-<select id="role"><option value="client">Sou cliente</option><option value="professional">Sou profissional</option></select>
+
+<select id="role">
+<option value="client">Sou cliente</option>
+<option value="professional">Sou profissional</option>
+</select>
+
 <input class="input" id="category" placeholder="Serviço principal (se profissional)">
+
 <input class="input" id="neighborhood" placeholder="Bairro/região">
-<button class="btn blue" onclick="register()">Criar conta</button><p id="regMsg"></p></section>
 
-<section id="search" class="hidden"><div class="top"><h2>Profissionais</h2><button class="btn" onclick="show('home')">Voltar</button></div>
-<input class="input" id="filter" placeholder="Ex.: eletricista, ar-condicionado..." oninput="renderPros()">
-<div id="pros"><p class="muted">Carregando...</p></div></section>
+<button class="btn blue" onclick="register()">
+Criar conta
+</button>
 
-<section id="request" class="hidden"><div class="top"><h2>Novo chamado</h2><button class="btn" onclick="show('home')">Voltar</button></div>
-<select id="reqCat"></select>
+<p id="regMsg"></p>
+
+</section>
+
+
+<section id="search" class="hidden">
+
+<div class="top">
+<h2>Profissionais</h2>
+<button class="btn" onclick="show('home')">Voltar</button>
+</div>
+
+<input
+class="input"
+id="filter"
+placeholder="Ex.: eletricista, ar-condicionado..."
+oninput="renderPros()"
+>
+
+<div id="pros">
+<p class="muted">Carregando...</p>
+</div>
+
+</section>
+
+
+<section id="request" class="hidden">
+
+<div class="top">
+<h2>Novo chamado</h2>
+<button class="btn" onclick="show('home')">Voltar</button>
+</div>
+
+<select id="reqCat">
+<option value="">Selecione o serviço</option>
+</select>
+
 <input class="input" id="reqNeighborhood" placeholder="Bairro">
+
 <textarea id="reqDesc" placeholder="Explique o serviço que precisa"></textarea>
-<label><input type="checkbox" id="urgent"> É urgente</label><br><br>
-<button class="btn red" onclick="createRequest()">Enviar chamado</button><p id="reqMsg"></p></section>
 
-<section id="dashboard" class="hidden"><div class="top"><h2 id="dashTitle">Minha conta</h2><button class="btn" onclick="logout()">Sair</button></div><div id="dash"></div></section>
+<label>
+<input type="checkbox" id="urgent">
+É urgente
+</label>
+
+<br><br>
+
+<button class="btn red" onclick="createRequest()">
+Enviar chamado
+</button>
+
+<p id="reqMsg"></p>
+
+</section>
+
+
+<section id="dashboard" class="hidden">
+
+<div class="top">
+<h2 id="dashTitle">Minha conta</h2>
+<button class="btn" onclick="logout()">Sair</button>
 </div>
-<div class="nav"><button class="btn" onclick="show('home')">Início</button><button class="btn" onclick="show('search')">Profissionais</button><button class="btn red" onclick="show('request')">Preciso agora</button></div>
+
+<div id="dash"></div>
+
+</section>
+
 </div>
 
-<script type="module">
-import { createClient } from 'https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2/+esm';
 
-const SUPABASE_URL = 'https://hwzagfmbdygzftmfhohe.supabase.co';
-const SUPABASE_PUBLISHABLE_KEY = 'sb_publishable_lr-PTJFwspmDeM6TswIFAA_BqJ1lqos';
-const supabase = createClient(SUPABASE_URL, SUPABASE_PUBLISHABLE_KEY);
+<div class="nav">
 
-let user=null, profile=null, categories=[];
+<button class="btn" onclick="show('home')">
+Início
+</button>
 
-const $=id=>document.getElementById(id);
-function msg(id,text,cls=''){ $(id).className=cls; $(id).textContent=text; }
-window.show=async function(id){
-  ['home','search','login','register','request','dashboard'].forEach(x=>$(x).classList.toggle('hidden',x!==id));
-  if(id==='search') await renderPros();
+<button class="btn" onclick="show('search')">
+Profissionais
+</button>
+
+<button class="btn red" onclick="show('request')">
+Preciso agora
+</button>
+
+</div>
+
+</div>
+
+
+<script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+
+<script>
+
+const SUPABASE_URL =
+'https://hwzagfmbdygzftmfhohe.supabase.co';
+
+const SUPABASE_PUBLISHABLE_KEY =
+'sb_publishable_lr-PTJFwspmDeM6TswIFAA_BqJ1lqos';
+
+const supabase =
+window.supabase.createClient(
+SUPABASE_URL,
+SUPABASE_PUBLISHABLE_KEY
+);
+
+
+let user = null;
+let profile = null;
+let categories = [];
+
+
+const $ = id => document.getElementById(id);
+
+
+function msg(id,text,cls=''){
+
+const el = $(id);
+
+if(!el) return;
+
+el.className = cls;
+el.textContent = text;
+
+}
+
+
+window.show = async function(id){
+
+[
+'home',
+'search',
+'login',
+'register',
+'request',
+'dashboard'
+].forEach(x => {
+
+const el = $(x);
+
+if(el){
+el.classList.toggle('hidden',x !== id);
+}
+
+});
+
+
+if(id === 'search'){
+await renderPros();
+}
+
+if(id === 'request'){
+await loadCategories();
+}
+
+if(id === 'dashboard'){
+await dashboard();
+}
+
+};
+
 
 async function loadSession(){
-  const {data}=await supabase.auth.getSession();
-  if(data.session){ user=data.session.user; await loadProfile(); }
-}
-async function loadProfile(){
-  if(!user) return;
-  const {data,error}=await supabase.from('profiles').select('*').eq('id',user.id).maybeSingle();
-  if(error) console.error(error); profile=data;
-}
-window.register=async function(){
-  const full_name=$('name').value.trim(), email=$('email').value.trim(), password=$('password').value;
-  const phone=$('phone').value.trim(), role=$('role').value, category=$('category').value.trim(), neighborhood=$('neighborhood').value.trim();
-  if(!full_name||!email||password.length<6){msg('regMsg','Preencha nome, e-mail e uma senha de pelo menos 6 caracteres.','error');return;}
-  msg('regMsg','Criando sua conta...','');
-  const {data,error}=await supabase.auth.signUp({email,password});
-  if(error){msg('regMsg',error.message,'error');return;}
-  if(!data.user){msg('regMsg','Não foi possível criar a conta.','error');return;}
-  const {error:pe}=await supabase.from('profiles').insert({id:data.user.id,full_name,phone,role,city:'Aracaju',state:'SE'});
-  if(pe){msg('regMsg','Conta criada, mas o perfil não foi salvo: '+pe.message,'error');return;}
-  if(role==='professional'){
-    const {data:cat}=await supabase.from('categories').select('id,name').ilike('name',category).limit(1).maybeSingle();
-    const {error:proErr}=await supabase.from('professional_profiles').insert({
-      id:data.user.id,description:'Profissional cadastrado no CHAMA PRO ARACAJU',
-      service_area:neighborhood,whatsapp:phone,approved:false,verified:false
-    });
-    if(proErr) console.error(proErr);
-    if(cat) await supabase.from('professional_categories').insert({professional_id:data.user.id,category_id:cat.id});
-  }
-  user=data.user; await loadProfile();
-  if(data.session){msg('regMsg','Cadastro realizado com sucesso!','ok');show('dashboard');}
-  else msg('regMsg','Cadastro criado! Verifique seu e-mail para confirmar a conta e depois entre no aplicativo.','ok');
-};
-window.login=async function(){
-  const email=$('loginEmail').value.trim(), password=$('loginPassword').value;
-  msg('loginMsg','Entrando...','');
-  const {data,error}=await supabase.auth.signInWithPassword({email,password});
-  if(error){msg('loginMsg',error.message,'error');return;}
-  user=data.user; await loadProfile(); msg('loginMsg','Login realizado!','ok'); show('dashboard');
-};
-async function loadCategories(){
-  const {data,error}=await supabase.from('categories').select('id,name,icon').eq('active',true).order('id');
-  if(error){msg('reqMsg',error.message,'error');return;}
-  categories=data||[];
-  $('#reqCat').innerHTML=categories.map(c=>`<option value="${c.id}">${c.icon||''} ${c.name}</option>`).join('');
 
-window.renderPros=async function(){
-  const {data,error}=await supabase.from('professional_profiles')
-    .select('id,description,service_area,whatsapp,verified,available_now,rating,rating_count,profiles!professional_profiles_id_fkey(full_name),professional_categories(categories(name))')
-    .eq('approved',true).order('rating',{ascending:false});
-  if(error){$('pros').innerHTML='<p class="error">'+error.message+'</p>';return;}
-  const f=($('filter').value||'').toLowerCase();
-  const rows=(data||[]).filter(p=>{
-    const name=p.profiles?.full_name||'', cats=(p.professional_categories||[]).map(x=>x.categories?.name||'').join(' ');
-    return (name+' '+cats+' '+(p.service_area||'')+' '+(p.description||'')).toLowerCase().includes(f);
-  });
-  $('pros').innerHTML=rows.map(p=>{
-    const cats=(p.professional_categories||[]).map(x=>x.categories?.name||'').filter(Boolean).join(', ')||'Profissional';
-    return `<div class="card pro"><div><h3>${p.profiles?.full_name||'Profissional'} ${p.verified?'✅':''}</h3>
-    <div>${cats}</div><div class="rating">⭐ ${p.rating_count?p.rating:'Novo'}</div>
-    <p class="muted">${p.service_area||'Aracaju'}</p></div>
-    <div>${p.available_now?'<span class="pill">Disponível agora</span>':''}<br><br>
-    <button class="btn blue" onclick="callPro('${(p.whatsapp||'').replace(/'/g,"\\'")}')">Chamar</button></div></div>`;
-  }).join('')||'<p>Nenhum profissional aprovado encontrado.</p>';
-};
-window.callPro=function(phone){ if(!phone){alert('Este profissional ainda não informou o WhatsApp.');return;} location.href='https://wa.me/'+phone.replace(/\D/g,''); };
-window.createRequest=async function(){
-  if(!user){alert('Faça seu cadastro/entre primeiro.');show('login');return;}
-  const category_id=Number($('reqCat').value), neighborhood=$('reqNeighborhood').value.trim(), description=$('reqDesc').value.trim(), urgent=$('urgent').checked;
-  if(!description){msg('reqMsg','Descreva o serviço que precisa.','error');return;}
-  const cat=categories.find(c=>c.id===category_id);
-  const {data,error}=await supabase.from('service_requests').insert({client_id:user.id,category_id,title:cat?.name||'Serviço',description,neighborhood,city:'Aracaju',urgent,status:'open'}).select().single();
-  if(error){msg('reqMsg',error.message,'error');return;}
-  msg('reqMsg','Chamado enviado com sucesso! Agora profissionais poderão receber a solicitação.','ok');
-};
-async function dashboard(){
-  if(!user){show('home');return;}
-  await loadProfile();
-  $('dashTitle').textContent=profile?.role==='professional'?'Painel do profissional':'Minha conta';
-  if(profile?.role==='professional'){
-    const {data:p}=await supabase.from('professional_profiles').select('*').eq('id',user.id).maybeSingle();
-    $('dash').innerHTML=`<div class="card"><h3>${profile.full_name}</h3><p>${p?.verified?'✅ Perfil verificado':'⏳ Perfil aguardando verificação'}</p><p>${p?.approved?'🟢 Publicado para clientes':'🔒 Ainda não publicado'}</p><p>⭐ ${p?.rating||'Novo'}</p></div>`;
-  } else {
-    const {data:rs}=await supabase.from('service_requests').select('*,categories(name,icon)').eq('client_id',user.id).order('created_at',{ascending:false});
-    $('dash').innerHTML=`<div class="card"><h3>${profile?.full_name||''}</h3><p>Chamados enviados: ${(rs||[]).length}</p></div>`+
-      (rs||[]).map(r=>`<div class="card ${r.urgent?'urgent':''}"><b>${r.categories?.icon||''} ${r.categories?.name||r.title}</b><p>${r.description||''}</p><span class="pill">${r.status}</span></div>`).join('');
-  }
+const {data} =
+await supabase.auth.getSession();
+
+if(data.session){
+
+user = data.session.user;
+
+await loadProfile();
+
 }
-window.logout=async function(){await supabase.auth.signOut();user=null;profile=null;show('home');};
-supabase.auth.onAuthStateChange(async (_event,session)=>{user=session?.user||null;if(user) await loadProfile();});
+
+}
+
+
+async function loadProfile(){
+
+if(!user) return;
+
+const {data,error} =
+await supabase
+.from('profiles')
+.select('*')
+.eq('id',user.id)
+.maybeSingle();
+
+if(error){
+console.error(error);
+}
+
+profile = data;
+
+}
+
+
+window.register = async function(){
+
+const full_name =
+$('name').value.trim();
+
+const email =
+$('email').value.trim();
+
+const password =
+$('password').value;
+
+const phone =
+$('phone').value.trim();
+
+const role =
+$('role').value;
+
+const category =
+$('category').value.trim();
+
+const neighborhood =
+$('neighborhood').value.trim();
+
+
+if(
+!full_name ||
+!email ||
+password.length < 6
+){
+
+msg(
+'regMsg',
+'Preencha nome, e-mail e uma senha de pelo menos 6 caracteres.',
+'error'
+);
+
+return;
+
+}
+
+
+msg(
+'regMsg',
+'Criando sua conta...'
+);
+
+
+const {data,error} =
+await supabase.auth.signUp({
+email,
+password
+});
+
+
+if(error){
+
+msg(
+'regMsg',
+error.message,
+'error'
+);
+
+return;
+
+}
+
+
+if(!data.user){
+
+msg(
+'regMsg',
+'Não foi possível criar a conta.',
+'error'
+);
+
+return;
+
+}
+
+
+const {error:pe} =
+await supabase
+.from('profiles')
+.insert({
+
+id:data.user.id,
+full_name,
+phone,
+role,
+city:'Aracaju',
+state:'SE'
+
+});
+
+
+if(pe){
+
+msg(
+'regMsg',
+'Conta criada, mas o perfil não foi salvo: '+pe.message,
+'error'
+);
+
+return;
+
+}
+
+
+if(role === 'professional'){
+
+const {data:cat} =
+await supabase
+.from('categories')
+.select('id,name')
+.ilike('name',category)
+.limit(1)
+.maybeSingle();
+
+
+const {error:proErr} =
+await supabase
+.from('professional_profiles')
+.insert({
+
+id:data.user.id,
+description:
+'Profissional cadastrado no CHAMA PRO ARACAJU',
+
+service_area:neighborhood,
+whatsapp:phone,
+approved:false,
+verified:false
+
+});
+
+
+if(proErr){
+console.error(proErr);
+}
+
+
+if(cat){
+
+await supabase
+.from('professional_categories')
+.insert({
+
+professional_id:data.user.id,
+category_id:cat.id
+
+});
+
+}
+
+}
+
+
+user = data.user;
+
+await loadProfile();
+
+
+if(data.session){
+
+msg(
+'regMsg',
+'Cadastro realizado com sucesso!',
+'ok'
+);
+
+show('dashboard');
+
+}else{
+
+msg(
+'regMsg',
+'Cadastro criado! Verifique seu e-mail para confirmar a conta e depois entre no aplicativo.',
+'ok'
+);
+
+}
+
+};
+
+
+window.login = async function(){
+
+const email =
+$('loginEmail').value.trim();
+
+const password =
+$('loginPassword').value;
+
+
+msg(
+'loginMsg',
+'Entrando...'
+);
+
+
+const {data,error} =
+await supabase.auth.signInWithPassword({
+
+email,
+password
+
+});
+
+
+if(error){
+
+msg(
+'loginMsg',
+error.message,
+'error'
+);
+
+return;
+
+}
+
+
+user = data.user;
+
+await loadProfile();
+
+
+msg(
+'loginMsg',
+'Login realizado!',
+'ok'
+);
+
+show('dashboard');
+
+};
+
+
+async function loadCategories(){
+
+if(!supabase){
+
+$('reqCat').innerHTML =
+'<option value="">Servidor indisponível no momento</option>';
+
+return;
+
+}
+
+
+const fallback = [
+
+{id:1,name:'Encanador',icon:'🚰'},
+{id:2,name:'Eletricista',icon:'⚡'},
+{id:3,name:'Ar-condicionado',icon:'❄️'},
+{id:4,name:'Pedreiro',icon:'🧱'},
+{id:5,name:'Pintor',icon:'🎨'},
+{id:6,name:'Mecânico',icon:'🔧'},
+{id:7,name:'Marceneiro',icon:'🪚'},
+{id:8,name:'Diarista / Limpeza',icon:'🧹'},
+{id:9,name:'Eletrônica',icon:'📺'},
+{id:10,name:'Informática',icon:'💻'},
+{id:11,name:'Reformas',icon:'🏠'},
+{id:12,name:'Serralheiro',icon:'🔩'},
+{id:13,name:'Jardinagem',icon:'🌿'},
+{id:14,name:'Fretes',icon:'🚚'}
+
+];
+
+
+const {data,error} =
+await supabase
+.from('categories')
+.select('id,name,icon')
+.eq('active',true)
+.order('id');
+
+
+categories =
+(error || !data || !data.length)
+? fallback
+: data;
+
+
+$('reqCat').innerHTML =
+'<option value="">Selecione o serviço</option>' +
+
+categories.map(c =>
+`<option value="${c.id}">
+${c.icon || ''} ${c.name}
+</option>`
+).join('');
+
+
+if(error){
+
+console.warn(
+'Categorias do Supabase indisponíveis; usando lista local.',
+error
+);
+
+}
+
+};
+
+
+window.renderPros = async function(){
+
+const {data,error} =
+await supabase
+.from('professional_profiles')
+.select(`
+id,
+description,
+service_area,
+whatsapp,
+verified,
+available_now,
+rating,
+rating_count,
+profiles!professional_profiles_id_fkey(full_name),
+professional_categories(categories(name))
+`)
+.eq('approved',true)
+.order('rating',{ascending:false});
+
+
+if(error){
+
+$('pros').innerHTML =
+'<p class="error">' +
+error.message +
+'</p>';
+
+return;
+
+}
+
+
+const f =
+($('filter').value || '')
+.toLowerCase();
+
+
+const rows =
+(data || []).filter(p => {
+
+const name =
+p.profiles?.full_name || '';
+
+const cats =
+(p.professional_categories || [])
+.map(x =>
+x.categories?.name || ''
+)
+.join(' ');
+
+
+return (
+
+name + ' ' +
+cats + ' ' +
+(p.service_area || '') + ' ' +
+(p.description || '')
+
+)
+.toLowerCase()
+.includes(f);
+
+});
+
+
+$('pros').innerHTML =
+
+rows.map(p => {
+
+const cats =
+(p.professional_categories || [])
+.map(x =>
+x.categories?.name || ''
+)
+.filter(Boolean)
+.join(', ') ||
+'Profissional';
+
+
+return `
+
+<div class="card pro">
+
+<div>
+
+<h3>
+${p.profiles?.full_name || 'Profissional'}
+${p.verified ? '✅' : ''}
+</h3>
+
+<div>${cats}</div>
+
+<div class="rating">
+⭐ ${p.rating_count ? p.rating : 'Novo'}
+</div>
+
+<p class="muted">
+${p.service_area || 'Aracaju'}
+</p>
+
+</div>
+
+
+<div>
+
+${
+p.available_now
+?
+'<span class="pill">Disponível agora</span>'
+:
+''
+}
+
+<br><br>
+
+<button
+class="btn blue"
+onclick="callPro('${(p.whatsapp || '').replace(/'/g,"\\'")}')"
+>
+Chamar
+</button>
+
+</div>
+
+</div>
+
+`;
+
+}).join('')
+
+||
+
+'<p>Nenhum profissional aprovado encontrado.</p>';
+
+};
+
+
+window.callPro = function(phone){
+
+if(!phone){
+
+alert(
+'Este profissional ainda não informou o WhatsApp.'
+);
+
+return;
+
+}
+
+
+location.href =
+'https://wa.me/' +
+phone.replace(/\D/g,'');
+
+};
+
+
+window.createRequest = async function(){
+
+if(!supabase){
+
+msg(
+'reqMsg',
+'Não foi possível conectar ao servidor.',
+'error'
+);
+
+return;
+
+}
+
+
+if(!user){
+
+alert(
+'Faça seu cadastro/entre primeiro.'
+);
+
+show('login');
+
+return;
+
+}
+
+
+const category_id =
+Number($('reqCat').value);
+
+const neighborhood =
+$('reqNeighborhood').value.trim();
+
+const description =
+$('reqDesc').value.trim();
+
+const urgent =
+$('urgent').checked;
+
+
+if(!category_id){
+
+msg(
+'reqMsg',
+'Selecione o serviço que precisa.',
+'error'
+);
+
+return;
+
+}
+
+
+if(!description){
+
+msg(
+'reqMsg',
+'Descreva o serviço que precisa.',
+'error'
+);
+
+return;
+
+}
+
+
+const cat =
+categories.find(
+c => c.id === category_id
+);
+
+
+const {error} =
+await supabase
+.from('service_requests')
+.insert({
+
+client_id:user.id,
+category_id,
+title:cat?.name || 'Serviço',
+description,
+neighborhood,
+city:'Aracaju',
+urgent,
+status:'open'
+
+});
+
+
+if(error){
+
+msg(
+'reqMsg',
+error.message,
+'error'
+);
+
+return;
+
+}
+
+
+msg(
+'reqMsg',
+'Chamado enviado com sucesso! Agora profissionais poderão receber a solicitação.',
+'ok'
+);
+
+};
+
+
+async function dashboard(){
+
+if(!user){
+
+show('home');
+
+return;
+
+}
+
+
+await loadProfile();
+
+
+$('dashTitle').textContent =
+profile?.role === 'professional'
+?
+'Painel do profissional'
+:
+'Minha conta';
+
+
+if(profile?.role === 'professional'){
+
+const {data:p} =
+await supabase
+.from('professional_profiles')
+.select('*')
+.eq('id',user.id)
+.maybeSingle();
+
+
+$('dash').innerHTML = `
+
+<div class="card">
+
+<h3>
+${profile.full_name}
+</h3>
+
+<p>
+${
+p?.verified
+?
+'✅ Perfil verificado'
+:
+'⏳ Perfil aguardando verificação'
+}
+</p>
+
+<p>
+${
+p?.approved
+?
+'🟢 Publicado para clientes'
+:
+'🔒 Ainda não publicado'
+}
+</p>
+
+<p>
+⭐ ${p?.rating || 'Novo'}
+</p>
+
+</div>
+
+`;
+
+}else{
+
+const {data:rs} =
+await supabase
+.from('service_requests')
+.select('*,categories(name,icon)')
+.eq('client_id',user.id)
+.order('created_at',{ascending:false});
+
+
+$('dash').innerHTML =
+
+`
+
+<div class="card">
+
+<h3>
+${profile?.full_name || ''}
+</h3>
+
+<p>
+Chamados enviados: ${(rs || []).length}
+</p>
+
+</div>
+
+` +
+
+(rs || []).map(r => `
+
+<div class="card ${r.urgent ? 'urgent' : ''}">
+
+<b>
+${r.categories?.icon || ''}
+${r.categories?.name || r.title}
+</b>
+
+<p>
+${r.description || ''}
+</p>
+
+<span class="pill">
+${r.status}
+</span>
+
+</div>
+
+`).join('');
+
+}
+
+};
+
+
+window.logout = async function(){
+
+await supabase.auth.signOut();
+
+user = null;
+profile = null;
+
+show('home');
+
+};
+
+
+supabase.auth.onAuthStateChange(
+async (_event,session) => {
+
+user =
+session?.user || null;
+
+if(user){
+
+await loadProfile();
+
+}
+
+}
+);
+
+
 loadSession();
+
 </script>
-</body></html>
+
+</body>
+</html>
